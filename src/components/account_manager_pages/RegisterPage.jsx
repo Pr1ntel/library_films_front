@@ -1,4 +1,5 @@
-import { Button, Checkbox, Form, Input } from 'antd';
+import {Button, Checkbox, Form, Input} from 'antd';
+
 const onFinish = (values) => {
     console.log('Success:', values);
 };
@@ -40,7 +41,7 @@ const RegisterPage = () => (
                 },
             ]}
         >
-            <Input />
+            <Input/>
         </Form.Item>
 
         <Form.Item
@@ -53,13 +54,13 @@ const RegisterPage = () => (
                 },
             ]}
         >
-            <Input.Password />
+            <Input.Password/>
         </Form.Item>
 
 
         <Form.Item
             wrapperCol={{
-                offset:8,
+                offset: 8,
                 span: 16,
             }}
         >

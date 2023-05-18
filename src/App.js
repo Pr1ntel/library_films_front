@@ -23,13 +23,13 @@ const App = () => {
             <Route path="/register" element={<RegisterPage/>}/>
             <Route path="*" element={<NotFoundPage/>}/>
             <Route path="/auth" element={<AuthPage/>}/>
-                <Route path="/secure" element={<SecureLayout/>}>
-                    <Route path="home" element={<HomePage/>}/>
-                    <Route path="add-films" element={<AddFilms/>}/>
-                    <Route path="delete-films" element={<DeleteFilms/>}/>
-                    <Route path="find-film-by-id" element={<FindFilms/>}/>
-                    <Route path="style-films" element={<StyleFilms/>}/>
-                </Route>
+            <Route path="/secure" element={<SecureLayout/>}>
+                <Route path="home" element={<HomePage/>}/>
+                <Route path="add-films" element={<AddFilms/>}/>
+                <Route path="delete-films" element={<DeleteFilms/>}/>
+                <Route path="find-film-by-id" element={<FindFilms/>}/>
+                <Route path="style-films" element={<StyleFilms/>}/>
+            </Route>
 
         </Routes>
     )

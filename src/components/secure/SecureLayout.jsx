@@ -4,19 +4,20 @@ import {
     UserOutlined,
     VideoCameraOutlined,
 } from '@ant-design/icons';
-import { Button, Layout, Menu, theme } from 'antd';
-import { useState } from 'react';
-import {Link, NavLink, Outlet} from "react-router-dom";
-const { Header, Sider, Content } = Layout;
+import {Button, Layout, Menu, theme} from 'antd';
+import {useState} from 'react';
+import {Link, Outlet} from "react-router-dom";
+
+const {Header, Sider, Content} = Layout;
 const SecureLayout = () => {
     const [collapsed, setCollapsed] = useState(false);
     const {
-        token: { colorBgContainer },
+        token: {colorBgContainer},
     } = theme.useToken();
     return (
         <Layout>
             <Sider trigger={null} collapsible collapsed={collapsed}>
-                <div className="demo-logo-vertical" />
+                <div className="demo-logo-vertical"/>
                 <Menu
                     theme="dark"
                     mode="inline"
@@ -24,7 +25,7 @@ const SecureLayout = () => {
                     items={[
                         {
                             key: '1',
-                            icon: <UserOutlined />,
+                            icon: <UserOutlined/>,
                             label: <Link
                                 to='/secure/home'>
                                 Главная
@@ -32,15 +33,15 @@ const SecureLayout = () => {
                         },
                         {
                             key: '2',
-                            icon: <VideoCameraOutlined />,
+                            icon: <VideoCameraOutlined/>,
                             label: <Link
-                                to='/secure/styles'>
+                                to='/secure/style-films'>
                                 Жанры фильмов
                             </Link>,
                         },
                         {
                             key: '3',
-                            icon: <UploadOutlined />,
+                            icon: <UploadOutlined/>,
                             label: <Link
                                 to='/secure/find-film-by-id'>
                                 Поиск фильма
@@ -48,7 +49,7 @@ const SecureLayout = () => {
                         },
                         {
                             key: '4',
-                            icon: <UploadOutlined />,
+                            icon: <UploadOutlined/>,
                             label: <Link
                                 to='/secure/add-films'>
                                 Добавить фильм
@@ -56,12 +57,13 @@ const SecureLayout = () => {
                         },
                         {
                             key: '5',
-                            icon: <UploadOutlined />,
+                            icon: <UploadOutlined/>,
                             label: <Link
                                 to='/secure/delete-films'>
                                 Удалить фильм
                             </Link>,
                         },
+
                     ]}
                 />
             </Sider>
@@ -74,7 +76,7 @@ const SecureLayout = () => {
                 >
                     <Button
                         type="text"
-                        icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
+                        icon={collapsed ? <MenuUnfoldOutlined/> : <MenuFoldOutlined/>}
                         onClick={() => setCollapsed(!collapsed)}
                         style={{
                             fontSize: '16px',
@@ -91,7 +93,7 @@ const SecureLayout = () => {
                         background: colorBgContainer,
                     }}
                 >
-<Outlet/>
+                    <Outlet/>
                 </Content>
             </Layout>
         </Layout>
