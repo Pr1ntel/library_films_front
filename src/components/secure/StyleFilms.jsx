@@ -1,11 +1,11 @@
 import React from 'react';
 
-const HomePage = () => {
+const StyleFilms = () => {
     return (
         <div>
-            Home
+            style
         </div>
     );
 };
 
-export default HomePage;
+export default StyleFilms;

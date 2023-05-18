@@ -6,7 +6,7 @@ const NotFoundPage = () => {
     return (
         <div>
             <h1>NOT FOUND PAGE</h1>
-            <Link to="/">Вернитесь на главную страницу </Link>
+            <Link to="/secure">Вернитесь на главную страницу </Link>
         </div>
     );
 };
