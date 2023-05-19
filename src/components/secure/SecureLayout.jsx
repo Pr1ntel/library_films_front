@@ -36,7 +36,7 @@ const SecureLayout = () => {
                             icon: <VideoCameraOutlined/>,
                             label: <Link
                                 to='/secure/style-films'>
-                                Жанры фильмов
+                                Список фильмов
                             </Link>,
                         },
                         {
