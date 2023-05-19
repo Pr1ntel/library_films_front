@@ -6,21 +6,27 @@ const data = [
     {
         key: '1',
         name: 'John Brown',
-        age: 1,
+        date:'1992',
+        age: 1432,
         address: 'New York No. 1 Lake Park',
         description:'asdasdasda',
+        style:'good'
     },
     {
         key: '2',
         name: 'Joe Black',
-        age: 2,
+        date: "111",
+        age: 2354,
         address: 'London No. 1 Lake Park',
+        style:'sss'
     },
     {
         key: '3',
         name: 'Jim Green',
-        age: 3,
+        date: "222",
+        age: 145,
         address: 'Sydney No. 1 Lake Park',
+        style:'asd'
     },
     {
         key: '4',
@@ -141,31 +147,35 @@ const StyleFilms = () => {
             title: 'Название',
             dataIndex: 'name',
             key: 'name',
-            width: '30%',
+            width: '15%',
             ...getColumnSearchProps('name'),
+        },
+        {
+            title: 'Дата выхода',
+            dataIndex: 'date',
+            key: 'date',
+            width: '10%',
+            sorter: (a, b) => a.date - b.date,
+            sortDirections: ['descend', 'ascend'],
         },
         {
             title: 'Длительность',
             dataIndex: 'age',
             key: 'age',
             width: '10%',
-            sorter: (a, b) => a.age > b.age,   /*поправить соритровку*/
-            sortDirections: ['descend', 'ascend'],
-        },
-        {
-            title: 'Address',
-            dataIndex: 'address',
-            key: 'address',
-            ...getColumnSearchProps('address'),
-            sorter: (a, b) => a.address.length - b.address.length,
+            sorter: (a, b) => a.age - b.age,
             sortDirections: ['descend', 'ascend'],
         },
         {
             title: 'Описание',
             dataIndex: 'description',
             key: 'description',
-            width: '20%',
-            ...getColumnSearchProps('name'),
+        },
+        {
+            title: 'Жанр',
+            dataIndex: 'style',
+            key: 'style',
+            width: '10%',
         },
     ];
     return <Table columns={columns} dataSource={data} />;
