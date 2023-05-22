@@ -1,44 +1,29 @@
 import { SearchOutlined } from '@ant-design/icons';
 import { Button, Input, Space, Table } from 'antd';
-import { useRef, useState } from 'react';
+import {useEffect, useRef, useState} from 'react';
 import Highlighter from 'react-highlight-words';
-const data = [
-    {
-        key: '1',
-        name: 'John Brown',
-        date:'1992',
-        age: 1432,
-        address: 'New York No. 1 Lake Park',
-        description:'asdasdasda',
-        style:'good'
-    },
-    {
-        key: '2',
-        name: 'Joe Black',
-        date: "111",
-        age: 2354,
-        address: 'London No. 1 Lake Park',
-        style:'sss'
-    },
-    {
-        key: '3',
-        name: 'Jim Green',
-        date: "222",
-        age: 145,
-        address: 'Sydney No. 1 Lake Park',
-        style:'asd'
-    },
-    {
-        key: '4',
-        name: 'Jim Red',
-        age: 4,
-        address: 'London No. 2 Lake Park',
-    },
-];
-const StyleFilms = () => {
+import FilmsApiWorker from "../../films_worker_api/FilmsApiWorker";
+
+
+const AllFilms = () => {
     const [searchText, setSearchText] = useState('');
     const [searchedColumn, setSearchedColumn] = useState('');
     const searchInput = useRef(null);
+
+    let filmsApiWorker = new FilmsApiWorker();
+    let [data,setData] = useState([]);
+    const getAllFilms = () => {
+        filmsApiWorker.getAllFilms()
+            .then(response => {
+                setData(response.data);
+            })
+            .catch(error => {
+                console.log("getAllFilms ERRRROR");
+            });
+    }
+    useEffect(() => {
+        getAllFilms();
+    }, []);
     const handleSearch = (selectedKeys, confirm, dataIndex) => {
         confirm();
         setSearchText(selectedKeys[0]);
@@ -180,4 +165,4 @@ const StyleFilms = () => {
     ];
     return <Table columns={columns} dataSource={data} />;
 };
-export default StyleFilms;
+export default AllFilms;
