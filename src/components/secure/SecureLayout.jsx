@@ -92,7 +92,7 @@ const SecureLayout = () => {
                         minHeight: 280,
                         background: colorBgContainer,
                     }}
-                >
+             >
                     <Outlet/>
                 </Content>
             </Layout>
