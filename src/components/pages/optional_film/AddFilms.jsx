@@ -94,6 +94,7 @@ const AddFilms = () => {
                                 ]}
                             >
                                 <Input value={nameFilms}
+                                       allowClear="true"
                                        placeholder="Название фильма"
                                        onChange={event => {
                                            setNameFilms(event.target.value);
@@ -111,6 +112,8 @@ const AddFilms = () => {
                                 ]}
                             >
                                 <Select
+                                    allowClear="true"
+
                                     showSearch
                                     placeholder="Выбор жанра"
                                     optionFilterProp="children"
@@ -151,6 +154,7 @@ const AddFilms = () => {
                                 ]}
                             >
                                 <Input value={releaseDate}
+                                       allowClear="true"
                                        placeholder="Дата выхода"
                                        onChange={event => {
                                            setReleaseDate(event.target.value);
@@ -162,6 +166,7 @@ const AddFilms = () => {
                                 label="Длительность(Минут)"
                             >
                                 <Input value={durationFilm}
+                                       allowClear="true"
                                        placeholder="Введите длительность"
                                        onChange={event => {
                                            setDurationFilm(event.target.value);
@@ -179,6 +184,7 @@ const AddFilms = () => {
                                 ]}
                             >
                                 <Input value={descriptionFilm}
+                                       allowClear="true"
                                        placeholder="Краткое описание"
                                        onChange={event => {
                                            setDescriptionFilm(event.target.value);

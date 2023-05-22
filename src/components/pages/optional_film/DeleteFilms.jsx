@@ -8,18 +8,18 @@ const DeleteFilms = () => {
     let [data, setData] = useState("");
 
 
-   /* const deleteFilmById = () => {
-        filmsApiWorker.deleteFilmById(battlefieldData)
-            .then(response => {
-                window.location.reload();
-            })
-            .catch(error => {
-                console.log("getFindFilm ERRRROR");
-            });
-    }
-    useEffect(() => {
-        deleteFilmById(battlefieldData);
-    }, []);*/
+    /* const deleteFilmById = () => {
+         filmsApiWorker.deleteFilmById(battlefieldData)
+             .then(response => {
+                 window.location.reload();
+             })
+             .catch(error => {
+                 console.log("getFindFilm ERRRROR");
+             });
+     }
+     useEffect(() => {
+         deleteFilmById(battlefieldData);
+     }, []);*/
     const navigate = useNavigate();
     return (
         <div>
@@ -27,7 +27,9 @@ const DeleteFilms = () => {
                 <Col span={24}>
                     <div style={{opacity: 1}}>
                         <div>
-                            <Input placeholder="ID фильма" style={{
+
+                            <Input allowClear="true"
+                                   placeholder="Название фильма" style={{
                                 width: '19%',
                             }}
                                    value={battlefieldData}
@@ -35,6 +37,7 @@ const DeleteFilms = () => {
                                        setBattlefieldData(event.target.value);
                                        console.log(battlefieldData)
                                    }}/>
+
                         </div>
                         <div>
                             <Space
@@ -51,8 +54,8 @@ const DeleteFilms = () => {
                                     style={{
                                         width: '9%',
                                     }}
-                                    /*onClick={deleteFilmById}>*/
-                                >
+                                /*onClick={deleteFilmById}>*/
+                            >
                                 Удалить
                             </Button>
                         </div>
