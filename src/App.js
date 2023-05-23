@@ -2,8 +2,8 @@ import React from "react";
 import {Route} from "react-router-dom";
 import {Routes} from "react-router-dom";
 
-import MainPage from "./components/main_pages/MainPage";
-import NotFoundPage from "./components/main_pages/NotFoundPage";
+import MainPage from "./components/secure/main_pages/MainPage";
+import NotFoundPage from "./components/secure/main_pages/NotFoundPage";
 import NotAuthPage from "./components/secure/NotAuthPage";
 import SecureLayout from "./components/secure/SecureLayout";
 import HomePage from "./components/secure/HomePage";
@@ -21,14 +21,15 @@ const App = () => {
 
             <Route path="/" element={<MainPage/>}/>
             <Route path="/register" element={<RegisterPage/>}/>
-            <Route path="*" element={<NotFoundPage/>}/>
-            <Route path="/auth" element={<AuthPage/>}/>
+            <Route path="/authenticate" element={<AuthPage/>}/>
+            <Route path="*" element={<NotAuthPage/>}/>
             <Route path="/secure" element={<SecureLayout/>}>
                 <Route path="home" element={<HomePage/>}/>
                 <Route path="add-films" element={<AddFilms/>}/>
                 <Route path="delete-films" element={<DeleteFilms/>}/>
                 <Route path="find-film-by-id" element={<FindFilms/>}/>
                 <Route path="all-films" element={<AllFilms/>}/>
+                <Route path="*" element={<NotFoundPage/>}/>
             </Route>
 
         </Routes>
