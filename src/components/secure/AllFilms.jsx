@@ -13,7 +13,7 @@ const AllFilms = () => {
     let filmsApiWorker = new FilmsApiWorker();
     let [data,setData] = useState([]);
     const getAllFilms = () => {
-        filmsApiWorker.getAllFilms()
+        filmsApiWorker.getAllFilms(token)
             .then(response => {
                 setData(response.data);
             })

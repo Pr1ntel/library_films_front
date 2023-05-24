@@ -14,6 +14,8 @@ const onFinishFailed = (errorInfo) => {
 
 const RegisterPage = () => {
 
+    let [username, setUsername] = useState("");
+    let [password, setPassword] = useState("");
     return (
 
         <Form
@@ -50,7 +52,8 @@ const RegisterPage = () => {
                     },
                 ]}
             >
-                <Input />
+                <Input value={username}
+                       onChange={event=>setUsername(event.target.value)} />
             </Form.Item>
 
             <Form.Item
@@ -63,7 +66,8 @@ const RegisterPage = () => {
                     },
                 ]}
             >
-                <Input.Password/>
+                <Input.Password value={password}
+                                onChange={event=>setPassword(event.target.value)} />
             </Form.Item>
 
 

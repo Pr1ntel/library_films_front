@@ -101,7 +101,7 @@ const AuthPage = () => {
                 }}
             >
                 <Button type="primary" htmlType="submit">
-                    Зарегистрироваться
+                    Авторизоваться
                 </Button>
             </Form.Item>
         </Form>
