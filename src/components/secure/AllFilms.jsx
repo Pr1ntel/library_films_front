@@ -3,6 +3,8 @@ import { Button, Input, Space, Table } from 'antd';
 import {useEffect, useRef, useState} from 'react';
 import Highlighter from 'react-highlight-words';
 import FilmsApiWorker from "../../films_worker_api/FilmsApiWorker";
+import localStorageWorker from "../../store/LocalStorageWorker";
+import LocalStorageWorker from "../../store/LocalStorageWorker";
 
 
 const AllFilms = () => {
@@ -11,8 +13,11 @@ const AllFilms = () => {
     const searchInput = useRef(null);
 
     let filmsApiWorker = new FilmsApiWorker();
+    let localStorageWorker = new LocalStorageWorker();
     let [data,setData] = useState([]);
     const getAllFilms = () => {
+        let token = localStorageWorker.getToken()
+
         filmsApiWorker.getAllFilms(token)
             .then(response => {
                 setData(response.data);

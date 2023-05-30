@@ -17,8 +17,12 @@ class FilmsApiWorker {
     });
     }
 
-    async addNewFilm(filmsItem) {
-        return await this.#axios.post("/add-films", filmsItem);
+    async addNewFilm(filmsItem,token) {
+        return await this.#axios.post("/add-films", filmsItem, {
+        headers: {
+            "Authorization": "Bearer " + token
+        }
+    });
     }
 
 }
