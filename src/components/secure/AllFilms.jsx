@@ -3,9 +3,6 @@ import { Button, Input, Space, Table } from 'antd';
 import {useEffect, useRef, useState} from 'react';
 import Highlighter from 'react-highlight-words';
 import FilmsApiWorker from "../../films_worker_api/FilmsApiWorker";
-import LocalStorageWorker from "../../store/LocalStorageWorker";
-
-
 
 
 const AllFilms = () => {
@@ -14,12 +11,8 @@ const AllFilms = () => {
     const searchInput = useRef(null);
 
     let filmsApiWorker = new FilmsApiWorker();
-    let localStorageWorker = new LocalStorageWorker();
     let [data,setData] = useState([]);
-
-
     const getAllFilms = () => {
-        let token =localStorageWorker.getToken();
         filmsApiWorker.getAllFilms(token)
             .then(response => {
                 setData(response.data);
@@ -137,14 +130,14 @@ const AllFilms = () => {
     const columns = [
         {
             title: 'Название',
-            dataIndex: 'nameFilm',
+            dataIndex: 'name_film',
             key: '1',
             width: '15%',
             ...getColumnSearchProps('name'),
         },
         {
             title: 'Дата выхода',
-            dataIndex: 'releasDate',
+            dataIndex: 'release_date',
             key: '2',
             width: '10%',
             sorter: (a, b) => a.date - b.date,
@@ -152,7 +145,7 @@ const AllFilms = () => {
         },
         {
             title: 'Длительность',
-            dataIndex: 'durationFilm',
+            dataIndex: 'duration_film',
             key: '3',
             width: '10%',
             sorter: (a, b) => a.age - b.age,
@@ -160,7 +153,7 @@ const AllFilms = () => {
         },
         {
             title: 'Описание',
-            dataIndex: 'descriptionFilm',
+            dataIndex: 'description_film',
             key: '4',
         },
         {
