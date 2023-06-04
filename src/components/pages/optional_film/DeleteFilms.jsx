@@ -5,8 +5,6 @@ import {useNavigate} from "react-router-dom";
 
 const DeleteFilms = () => {
     let [battlefieldData, setBattlefieldData] = useState("");
-    let [data, setData] = useState("");
-
 
     /* const deleteFilmById = () => {
          filmsApiWorker.deleteFilmById(battlefieldData)

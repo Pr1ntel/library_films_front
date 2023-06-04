@@ -3,6 +3,8 @@ import { Button, Input, Space, Table } from 'antd';
 import {useEffect, useRef, useState} from 'react';
 import Highlighter from 'react-highlight-words';
 import FilmsApiWorker from "../../films_worker_api/FilmsApiWorker";
+import LocalStorageWorker from "../../store/LocalStorageWorker";
+
 
 
 const AllFilms = () => {
@@ -11,8 +13,11 @@ const AllFilms = () => {
     const searchInput = useRef(null);
 
     let filmsApiWorker = new FilmsApiWorker();
+    let localStorageWorker = new LocalStorageWorker();
     let [data,setData] = useState([]);
     const getAllFilms = () => {
+        let token = localStorageWorker.getToken();
+
         filmsApiWorker.getAllFilms(token)
             .then(response => {
                 setData(response.data);
@@ -130,35 +135,35 @@ const AllFilms = () => {
     const columns = [
         {
             title: 'Название',
-            dataIndex: 'name_film',
+            dataIndex: 'name',
             key: '1',
             width: '15%',
             ...getColumnSearchProps('name'),
         },
         {
             title: 'Дата выхода',
-            dataIndex: 'release_date',
+            dataIndex: 'releaseYear',
             key: '2',
             width: '10%',
-            sorter: (a, b) => a.date - b.date,
+            sorter: (a, b) => a.releaseYear - b.releaseYear,
             sortDirections: ['descend', 'ascend'],
         },
         {
             title: 'Длительность',
-            dataIndex: 'duration_film',
+            dataIndex: 'duration',
             key: '3',
             width: '10%',
-            sorter: (a, b) => a.age - b.age,
+            sorter: (a, b) => b.duration -a.duration,
             sortDirections: ['descend', 'ascend'],
         },
         {
             title: 'Описание',
-            dataIndex: 'description_film',
+            dataIndex: 'description',
             key: '4',
         },
         {
             title: 'Жанр',
-            dataIndex: 'style_film',
+            dataIndex: 'styleFilmName',
             key: '5',
             width: '10%',
         },
