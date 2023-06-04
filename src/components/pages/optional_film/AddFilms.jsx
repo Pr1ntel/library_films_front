@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {Button, Col, Form, Input, Row, Select} from 'antd';
 import {useNavigate} from "react-router-dom";
-
+import FilmsApiWorker from "../../../films_worker_api/FilmsApiWorker";
 
 
 const layout = {
@@ -32,17 +32,17 @@ const onSearch = (value) => {
 };
 
 const AddFilms = () => {
-    let [nameFilms, setNameFilms] = useState("");
-    let [releaseDate, setReleaseDate] = useState("");
-    let [durationFilm, setDurationFilm] = useState("");
+    let [name, setName] = useState("");
+    let [releaseYear, setReleaseYear] = useState("");
+    let [duration, setDuration] = useState("");
     let [styleFilm, setStyleFilm] = useState("");
-    let [descriptionFilm, setDescriptionFilm] = useState("");
+    let [description, setDescription] = useState("");
     let photoFilm = ``;
 
 
     let [data, setData] = useState([]);
 
-    /*let filmsApiWorker = new FilmsApiWorker();*/
+    let filmsApiWorker = new FilmsApiWorker();
 
 
     const onFinish = (value) => {
@@ -50,12 +50,12 @@ const AddFilms = () => {
     };
     const addFilmsItem = () => {
         let filmsItem = {
-            nameFilms,
-            releaseDate,
-            descriptionFilm,
-            durationFilm,
-            photoFilm,
-            styleFilm
+            name,
+            releaseYear,
+            duration,
+            styleFilm,
+            description
+
         };
         console.log(filmsItem);
 
@@ -84,7 +84,7 @@ const AddFilms = () => {
                             validateMessages={validateMessages}
                         >
                             <Form.Item
-                                name={['nameFilms']}
+                                name={['name']}
                                 label="Название фильма"
                                 rules={[
                                     {
@@ -93,12 +93,12 @@ const AddFilms = () => {
                                     },
                                 ]}
                             >
-                                <Input value={nameFilms}
+                                <Input value={name}
                                        allowClear="true"
                                        placeholder="Название фильма"
                                        onChange={event => {
-                                           setNameFilms(event.target.value);
-                                           console.log(nameFilms);
+                                           setName(event.target.value);
+                                           console.log(setName);
                                        }}/>
                             </Form.Item>
                             <Form.Item
@@ -129,7 +129,7 @@ const AddFilms = () => {
                                         },
                                         {
                                             value: '2',
-                                            label: 'Хоррор',
+                                            label: 'Ужасы',
                                         },
                                         {
                                             value: '3',
@@ -137,14 +137,22 @@ const AddFilms = () => {
                                         },
                                         {
                                             value: '4',
-                                            label: 'Исторический', /*поправить нумерацию из бд*/
+                                            label: 'Фантастика',
+                                        },
+                                        {
+                                            value: '5',
+                                            label: 'Исторический',
+                                        },
+                                        {
+                                            value: '6',
+                                            label: 'Приключения',
                                         },
 
                                     ]}
                                 />
                             </Form.Item>
                             <Form.Item
-                                name={['releaseDate']}
+                                name={['releaseYear']}
                                 label="Дата выхода"
                                 rules={[
                                     {
@@ -153,42 +161,42 @@ const AddFilms = () => {
                                     },
                                 ]}
                             >
-                                <Input value={releaseDate}
+                                <Input value={releaseYear}
                                        allowClear="true"
                                        placeholder="Дата выхода"
                                        onChange={event => {
-                                           setReleaseDate(event.target.value);
-                                           console.log(releaseDate);
+                                           setReleaseYear(event.target.value);
+                                           console.log(releaseYear);
                                        }}/>
                             </Form.Item>
                             <Form.Item
-                                name={['durationFilm']}
+                                name={['duration']}
                                 label="Длительность(Минут)"
                             >
-                                <Input value={durationFilm}
+                                <Input value={duration}
                                        allowClear="true"
                                        placeholder="Введите длительность"
                                        onChange={event => {
-                                           setDurationFilm(event.target.value);
-                                           console.log(durationFilm)
+                                           setDuration(event.target.value);
+                                           console.log(duration)
                                        }}/>
                             </Form.Item>
                             <Form.Item
-                                name={['descriptionFilm']}
+                                name={['description']}
                                 label="Описание фильма"
                                 rules={[
                                     {
-                                        required: false ,
+                                        required: false,
                                         message: "Введите описание фильма!",
                                     },
                                 ]}
                             >
-                                <Input value={descriptionFilm}
+                                <Input value={description}
                                        allowClear="true"
                                        placeholder="Краткое описание"
                                        onChange={event => {
-                                           setDescriptionFilm(event.target.value);
-                                           console.log(descriptionFilm)
+                                           setDescription(event.target.value);
+                                           console.log(description)
                                        }}/>
                             </Form.Item>
                             <Form.Item
