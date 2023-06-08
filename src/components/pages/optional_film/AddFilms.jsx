@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {Button, Col, Form, Input, Row, Select} from 'antd';
-import {useNavigate} from "react-router-dom";
 import FilmsApiWorker from "../../../films_worker_api/FilmsApiWorker";
+import LocalStorageWorker from "../../../store/LocalStorageWorker";
 
 
 const layout = {
@@ -35,7 +35,7 @@ const AddFilms = () => {
     let [name, setName] = useState("");
     let [releaseYear, setReleaseYear] = useState("");
     let [duration, setDuration] = useState("");
-    let [styleFilmName, setStyleFilmName] = useState("");
+    let [styleFilmId, setStyleFilmId] = useState("");
     let [description, setDescription] = useState("");
     let photoFilm = ``;
 
@@ -43,23 +43,26 @@ const AddFilms = () => {
     let [data, setData] = useState([]);
 
     let filmsApiWorker = new FilmsApiWorker();
+    let localStorageWorker = new LocalStorageWorker();
 
 
     const onFinish = (value) => {
         console.log(value);
     };
     const addFilmsItem = () => {
+
         let filmsItemRequestDto = {
             name,
             releaseYear,
             duration,
-            styleFilmName,
+            styleFilmId,
             description
 
         };
         console.log(filmsItemRequestDto);
+        let token = localStorageWorker.getToken();
+        filmsApiWorker.addNewFilm(filmsItemRequestDto, token)
 
-        filmsApiWorker.addNewFilm(filmsItemRequestDto)
             .then(response => {
                 console.log(200);
             })
@@ -67,7 +70,7 @@ const AddFilms = () => {
                 console.log("addFilm ERRRROR");
             });
     }
-    const navigate = useNavigate()
+
     return (
         <div>
             <Row>
@@ -102,7 +105,7 @@ const AddFilms = () => {
                                        }}/>
                             </Form.Item>
                             <Form.Item
-                                name={['styleFilmName']}
+                                name={['styleFilmId']}
                                 label="Жанр фильма"
                                 rules={[
                                     {
@@ -117,7 +120,7 @@ const AddFilms = () => {
                                     showSearch
                                     placeholder="Выбор жанра"
                                     optionFilterProp="children"
-                                    onChange={setStyleFilmName}
+                                    value={setStyleFilmId}
                                     onSearch={onSearch}
                                     filterOption={(input, option) =>
                                         (option?.label ?? '').toLowerCase().includes(input.toLowerCase())
