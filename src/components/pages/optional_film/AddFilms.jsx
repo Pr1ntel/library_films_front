@@ -35,7 +35,7 @@ const AddFilms = () => {
     let [name, setName] = useState("");
     let [releaseYear, setReleaseYear] = useState("");
     let [duration, setDuration] = useState("");
-    let [styleFilmId, setStyleFilmId] = useState("");
+    let [styleFilmName, setStyleFilmName] = useState("");
     let [description, setDescription] = useState("");
     let photoFilm = ``;
 
@@ -49,17 +49,17 @@ const AddFilms = () => {
         console.log(value);
     };
     const addFilmsItem = () => {
-        let filmsItem = {
+        let filmsItemRequestDto = {
             name,
             releaseYear,
             duration,
-            styleFilmId,
+            styleFilmName,
             description
 
         };
-        console.log(filmsItem);
+        console.log(filmsItemRequestDto);
 
-        filmsApiWorker.addNewFilm(filmsItem)
+        filmsApiWorker.addNewFilm(filmsItemRequestDto)
             .then(response => {
                 console.log(200);
             })
@@ -102,7 +102,7 @@ const AddFilms = () => {
                                        }}/>
                             </Form.Item>
                             <Form.Item
-                                name={['styleFilmId']}
+                                name={['styleFilmName']}
                                 label="Жанр фильма"
                                 rules={[
                                     {
@@ -111,13 +111,13 @@ const AddFilms = () => {
                                     },
                                 ]}
                             >
-                                <Select value={setStyleFilmId}
+                                <Select
                                     allowClear="true"
 
                                     showSearch
                                     placeholder="Выбор жанра"
                                     optionFilterProp="children"
-                                    onChange={onChange}
+                                    onChange={setStyleFilmName}
                                     onSearch={onSearch}
                                     filterOption={(input, option) =>
                                         (option?.label ?? '').toLowerCase().includes(input.toLowerCase())

@@ -17,8 +17,8 @@ class FilmsApiWorker {
         });
     }
 
-    async addNewFilm(filmsItem, token) {
-        return await this.#axios.post("/add-films", filmsItem, {
+    async addNewFilm(filmsItemRequestDto, token) {
+        return await this.#axios.post("/add-films", filmsItemRequestDto, {
             headers: {
                 "Authorization": "Bearer " + token
             }
