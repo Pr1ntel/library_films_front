@@ -35,7 +35,7 @@ const AddFilms = () => {
     let [name, setName] = useState("");
     let [releaseYear, setReleaseYear] = useState("");
     let [duration, setDuration] = useState("");
-    let [styleFilm, setStyleFilm] = useState("");
+    let [styleFilmId, setStyleFilmId] = useState("");
     let [description, setDescription] = useState("");
     let photoFilm = ``;
 
@@ -53,7 +53,7 @@ const AddFilms = () => {
             name,
             releaseYear,
             duration,
-            styleFilm,
+            styleFilmId,
             description
 
         };
@@ -102,7 +102,7 @@ const AddFilms = () => {
                                        }}/>
                             </Form.Item>
                             <Form.Item
-                                name={['styleFilm']}
+                                name={['styleFilmId']}
                                 label="Жанр фильма"
                                 rules={[
                                     {
@@ -111,7 +111,7 @@ const AddFilms = () => {
                                     },
                                 ]}
                             >
-                                <Select
+                                <Select value={setStyleFilmId}
                                     allowClear="true"
 
                                     showSearch
