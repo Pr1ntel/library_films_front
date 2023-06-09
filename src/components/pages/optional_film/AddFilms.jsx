@@ -49,6 +49,8 @@ const AddFilms = () => {
     const onChange = (value) => {
 setStyleFilmId(value);
     };
+
+    //DONE
     const addFilmsItem = () => {
         let filmsItem = {
             name,
