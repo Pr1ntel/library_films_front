@@ -94,6 +94,7 @@ setStyleFilmId(value);
                                     },
                                 ]}
                             >
+                                //DONE
                                 <Input value={name}
                                        allowClear="true"
                                        placeholder="Название фильма"
