@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {Button, Col, Form, Input, Row, Select} from 'antd';
 import {useNavigate} from "react-router-dom";
 import FilmsApiWorker from "../../../films_worker_api/FilmsApiWorker";
+import LocalStorageWorker from "../../../store/LocalStorageWorker";
 
 
 const layout = {
@@ -24,9 +25,7 @@ const validateMessages = {
     },
 };
 
-const onChange = (value) => {
-    console.log(`selected ${value}`);
-};
+
 const onSearch = (value) => {
     console.log('search:', value);
 };
@@ -35,31 +34,33 @@ const AddFilms = () => {
     let [name, setName] = useState("");
     let [releaseYear, setReleaseYear] = useState("");
     let [duration, setDuration] = useState("");
-    let [styleFilm, setStyleFilm] = useState("");
+    let [styleFilmId, setStyleFilmId] = useState("");
     let [description, setDescription] = useState("");
     let photoFilm = ``;
 
 
-    let [data, setData] = useState([]);
 
     let filmsApiWorker = new FilmsApiWorker();
-
+    let localStorageWorker = new LocalStorageWorker();
 
     const onFinish = (value) => {
         console.log(value);
+    };
+    const onChange = (value) => {
+setStyleFilmId(value);
     };
     const addFilmsItem = () => {
         let filmsItem = {
             name,
             releaseYear,
             duration,
-            styleFilm,
+            styleFilmId,
             description
 
         };
         console.log(filmsItem);
-
-        filmsApiWorker.addNewFilm(filmsItem)
+        let token = localStorageWorker.getToken();
+        filmsApiWorker.addNewFilm(filmsItem, token)
             .then(response => {
                 console.log(200);
             })
@@ -102,7 +103,7 @@ const AddFilms = () => {
                                        }}/>
                             </Form.Item>
                             <Form.Item
-                                name={['styleFilm']}
+                                name={['styleFilmId']}
                                 label="Жанр фильма"
                                 rules={[
                                     {
@@ -111,9 +112,8 @@ const AddFilms = () => {
                                     },
                                 ]}
                             >
-                                <Select
+                                <Select className={"selectValue"}
                                     allowClear="true"
-
                                     showSearch
                                     placeholder="Выбор жанра"
                                     optionFilterProp="children"
@@ -149,8 +149,11 @@ const AddFilms = () => {
                                         },
 
                                     ]}
+
                                 />
+
                             </Form.Item>
+
                             <Form.Item
                                 name={['releaseYear']}
                                 label="Дата выхода"
