@@ -1,10 +1,9 @@
-import { SearchOutlined } from '@ant-design/icons';
-import { Button, Input, Space, Table } from 'antd';
+import {SearchOutlined} from '@ant-design/icons';
+import {Button, Input, Space, Table} from 'antd';
 import {useEffect, useRef, useState} from 'react';
 import Highlighter from 'react-highlight-words';
 import FilmsApiWorker from "../../films_worker_api/FilmsApiWorker";
 import LocalStorageWorker from "../../store/LocalStorageWorker";
-
 
 
 const AllFilms = () => {
@@ -14,7 +13,7 @@ const AllFilms = () => {
 
     let filmsApiWorker = new FilmsApiWorker();
     let localStorageWorker = new LocalStorageWorker();
-    let [data,setData] = useState([]);
+    let [data, setData] = useState([]);
     const getAllFilms = () => {
         let token = localStorageWorker.getToken();
 
@@ -39,7 +38,7 @@ const AllFilms = () => {
         setSearchText('');
     };
     const getColumnSearchProps = (dataIndex) => ({
-        filterDropdown: ({ setSelectedKeys, selectedKeys, confirm, clearFilters, close }) => (
+        filterDropdown: ({setSelectedKeys, selectedKeys, confirm, clearFilters, close}) => (
             <div
                 style={{
                     padding: 8,
@@ -61,7 +60,7 @@ const AllFilms = () => {
                     <Button
                         type="primary"
                         onClick={() => handleSearch(selectedKeys, confirm, dataIndex)}
-                        icon={<SearchOutlined />}
+                        icon={<SearchOutlined/>}
                         size="small"
                         style={{
                             width: 90,
@@ -153,7 +152,7 @@ const AllFilms = () => {
             dataIndex: 'duration',
             key: '3',
             width: '10%',
-            sorter: (a, b) => b.duration -a.duration,
+            sorter: (a, b) => b.duration - a.duration,
             sortDirections: ['descend', 'ascend'],
         },
         {
@@ -168,6 +167,6 @@ const AllFilms = () => {
             width: '10%',
         },
     ];
-    return <Table columns={columns} dataSource={data} />;
+    return <Table columns={columns} dataSource={data}/>;
 };
 export default AllFilms;
