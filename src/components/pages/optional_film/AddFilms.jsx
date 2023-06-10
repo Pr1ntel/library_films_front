@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {Button, Col, Form, Input, Row, Select} from 'antd';
 import {useNavigate} from "react-router-dom";
 import FilmsApiWorker from "../../../films_worker_api/FilmsApiWorker";
+import LocalStorageWorker from "../../../store/LocalStorageWorker";
 
 
 const layout = {
@@ -24,9 +25,7 @@ const validateMessages = {
     },
 };
 
-const onChange = (value) => {
-    console.log(`selected ${value}`);
-};
+
 const onSearch = (value) => {
     console.log('search:', value);
 };
@@ -35,31 +34,33 @@ const AddFilms = () => {
     let [name, setName] = useState("");
     let [releaseYear, setReleaseYear] = useState("");
     let [duration, setDuration] = useState("");
-    let [styleFilm, setStyleFilm] = useState("");
+    let [styleFilmId, setStyleFilmId] = useState("");
     let [description, setDescription] = useState("");
     let photoFilm = ``;
 
 
-    let [data, setData] = useState([]);
 
     let filmsApiWorker = new FilmsApiWorker();
-
+    let localStorageWorker = new LocalStorageWorker();
 
     const onFinish = (value) => {
         console.log(value);
+    };
+    const onChange = (value) => {
+        setStyleFilmId(value);
     };
     const addFilmsItem = () => {
         let filmsItem = {
             name,
             releaseYear,
             duration,
-            styleFilm,
+            styleFilmId,
             description
 
         };
         console.log(filmsItem);
-
-        filmsApiWorker.addNewFilm(filmsItem)
+        let token = localStorageWorker.getToken();
+        filmsApiWorker.addNewFilm(filmsItem, token)
             .then(response => {
                 console.log(200);
             })
@@ -93,9 +94,7 @@ const AddFilms = () => {
                                     },
                                 ]}
                             >
-                                //DONE
-                                //asdjlfghadksjfghkdjslhbgekwaughkwsbfgasdhjbgaewubgekrw
-                                //asdsadasdasdsa
+
                                 <Input value={name}
                                        allowClear="true"
                                        placeholder="Название фильма"
@@ -105,7 +104,7 @@ const AddFilms = () => {
                                        }}/>
                             </Form.Item>
                             <Form.Item
-                                name={['styleFilm']}
+                                name={['styleFilmId']}
                                 label="Жанр фильма"
                                 rules={[
                                     {
@@ -114,46 +113,48 @@ const AddFilms = () => {
                                     },
                                 ]}
                             >
-                                <Select
-                                    allowClear="true"
+                                <Select className={"selectValue"}
+                                        allowClear="true"
+                                        showSearch
+                                        placeholder="Выбор жанра"
+                                        optionFilterProp="children"
+                                        onChange={onChange}
+                                        onSearch={onSearch}
+                                        filterOption={(input, option) =>
+                                            (option?.label ?? '').toLowerCase().includes(input.toLowerCase())
+                                        }
+                                        options={[
+                                            {
+                                                value: '1',
+                                                label: 'Боевик',
+                                            },
+                                            {
+                                                value: '2',
+                                                label: 'Ужасы',
+                                            },
+                                            {
+                                                value: '3',
+                                                label: 'Комедия',
+                                            },
+                                            {
+                                                value: '4',
+                                                label: 'Фантастика',
+                                            },
+                                            {
+                                                value: '5',
+                                                label: 'Исторический',
+                                            },
+                                            {
+                                                value: '6',
+                                                label: 'Приключения',
+                                            },
 
-                                    showSearch
-                                    placeholder="Выбор жанра"
-                                    optionFilterProp="children"
-                                    onChange={onChange}
-                                    onSearch={onSearch}
-                                    filterOption={(input, option) =>
-                                        (option?.label ?? '').toLowerCase().includes(input.toLowerCase())
-                                    }
-                                    options={[
-                                        {
-                                            value: '1',
-                                            label: 'Боевик',
-                                        },
-                                        {
-                                            value: '2',
-                                            label: 'Ужасы',
-                                        },
-                                        {
-                                            value: '3',
-                                            label: 'Комедия',
-                                        },
-                                        {
-                                            value: '4',
-                                            label: 'Фантастика',
-                                        },
-                                        {
-                                            value: '5',
-                                            label: 'Исторический',
-                                        },
-                                        {
-                                            value: '6',
-                                            label: 'Приключения',
-                                        },
+                                        ]}
 
-                                    ]}
                                 />
+
                             </Form.Item>
+
                             <Form.Item
                                 name={['releaseYear']}
                                 label="Дата выхода"
