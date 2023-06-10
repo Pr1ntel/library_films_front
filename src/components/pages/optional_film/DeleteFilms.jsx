@@ -1,23 +1,28 @@
 import {Col, Input, Space, Row, Select, Button} from 'antd';
 import React, {useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";
-
+import LocalStorageWorker from "../../../store/LocalStorageWorker";
+import FilmsApiWorker from "../../../films_worker_api/FilmsApiWorker";
 
 const DeleteFilms = () => {
-    let [battlefieldData, setBattlefieldData] = useState("");
+ let [nameFilm,setNameFilm] = useState("");
 
-    /* const deleteFilmById = () => {
-         filmsApiWorker.deleteFilmById(battlefieldData)
+ let filmsApiWorker = new FilmsApiWorker();
+ let localStorageWorker = new LocalStorageWorker();
+ let token = localStorageWorker.getToken();
+
+     const deleteFilmByName = () => {
+         filmsApiWorker.deleteFilmByName(nameFilm, token)
              .then(response => {
                  window.location.reload();
              })
              .catch(error => {
-                 console.log("getFindFilm ERRRROR");
+                 console.log("delete ERRRROR");
              });
      }
      useEffect(() => {
-         deleteFilmById(battlefieldData);
-     }, []);*/
+         deleteFilmByName(nameFilm);
+     }, []);
     const navigate = useNavigate();
     return (
         <div>
@@ -30,10 +35,10 @@ const DeleteFilms = () => {
                                    placeholder="Название фильма" style={{
                                 width: '19%',
                             }}
-                                   value={battlefieldData}
+                                   value={nameFilm}
                                    onChange={event => {
-                                       setBattlefieldData(event.target.value);
-                                       console.log(battlefieldData)
+                                       setNameFilm(event.target.value);
+                                       console.log(nameFilm)
                                    }}/>
 
                         </div>
@@ -52,7 +57,7 @@ const DeleteFilms = () => {
                                     style={{
                                         width: '9%',
                                     }}
-                                /*onClick={deleteFilmById}>*/
+                                onClick={deleteFilmByName}>
                             >
                                 Удалить
                             </Button>
