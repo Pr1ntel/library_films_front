@@ -1,9 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {Button, Col, Form, Input, Row, Select} from 'antd';
-import {useNavigate} from "react-router-dom";
 import FilmsApiWorker from "../../../films_worker_api/FilmsApiWorker";
 import LocalStorageWorker from "../../../store/LocalStorageWorker";
-
 
 const layout = {
     labelCol: {
@@ -37,9 +35,6 @@ const AddFilms = () => {
     let [styleFilmId, setStyleFilmId] = useState("");
     let [description, setDescription] = useState("");
     let photoFilm = ``;
-
-
-
     let filmsApiWorker = new FilmsApiWorker();
     let localStorageWorker = new LocalStorageWorker();
 
@@ -68,8 +63,7 @@ const AddFilms = () => {
                 console.log("addFilm ERRRROR");
             });
     }
-    const navigate = useNavigate()
-    return (
+        return (
         <div>
             <Row>
                 <Col span={24}>
@@ -150,11 +144,8 @@ const AddFilms = () => {
                                             },
 
                                         ]}
-
                                 />
-
                             </Form.Item>
-
                             <Form.Item
                                 name={['releaseYear']}
                                 label="Дата выхода"
@@ -214,7 +205,6 @@ const AddFilms = () => {
                                 >
                                     Добавить
                                 </Button>
-
                             </Form.Item>
                         </Form>
                     </div>
