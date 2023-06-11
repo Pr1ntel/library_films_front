@@ -40,14 +40,6 @@ const SecureLayout = () => {
                             </Link>,
                         },
                         {
-                            key: '3',
-                            icon: <UploadOutlined/>,
-                            label: <Link
-                                to='/secure/find-film-by-id'>
-                                Поиск фильма
-                            </Link>,
-                        },
-                        {
                             key: '4',
                             icon: <UploadOutlined/>,
                             label: <Link
