@@ -58,7 +58,7 @@ const DeleteFilms = () => {
                                         width: '9%',
                                     }}
                                 onClick={deleteFilmByName}>
-                            >
+
                                 Удалить
                             </Button>
                         </div>
