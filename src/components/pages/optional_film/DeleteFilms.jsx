@@ -5,23 +5,23 @@ import LocalStorageWorker from "../../../store/LocalStorageWorker";
 import FilmsApiWorker from "../../../films_worker_api/FilmsApiWorker";
 
 const DeleteFilms = () => {
- let [nameFilm,setNameFilm] = useState("");
+ let [name,setName] = useState("");
 
  let filmsApiWorker = new FilmsApiWorker();
  let localStorageWorker = new LocalStorageWorker();
  let token = localStorageWorker.getToken();
 
      const deleteFilmByName = () => {
-         filmsApiWorker.deleteFilmByName(nameFilm, token)
+         filmsApiWorker.deleteFilmByName(name, token)
              .then(response => {
-                 window.location.reload();
+                 console.log("DELETE OKEY")
              })
              .catch(error => {
                  console.log("delete ERRRROR");
              });
      }
      useEffect(() => {
-         deleteFilmByName(nameFilm);
+         deleteFilmByName(name);
      }, []);
     const navigate = useNavigate();
     return (
@@ -35,10 +35,10 @@ const DeleteFilms = () => {
                                    placeholder="Название фильма" style={{
                                 width: '19%',
                             }}
-                                   value={nameFilm}
+                                   value={name}
                                    onChange={event => {
-                                       setNameFilm(event.target.value);
-                                       console.log(nameFilm)
+                                       setName(event.target.value);
+                                       console.log(name)
                                    }}/>
 
                         </div>

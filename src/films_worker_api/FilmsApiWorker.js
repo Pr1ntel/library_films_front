@@ -26,7 +26,7 @@ class FilmsApiWorker {
     }
 
     async deleteFilmByName(name, token) {
-        return await this.#axios.delete("/delete-films", name, {
+        return await this.#axios.delete(`/delete-films/${name}`, {
             headers: {
                 "Authorization": "Bearer " + token
             }
