@@ -1,4 +1,4 @@
-import {SearchOutlined} from '@ant-design/icons';
+import {CheckOutlined, MinusOutlined, PlusCircleOutlined, PlusOutlined, SearchOutlined} from '@ant-design/icons';
 import {Button, Input, Space, Table} from 'antd';
 import {useEffect, useRef, useState} from 'react';
 import Highlighter from 'react-highlight-words';
@@ -131,6 +131,7 @@ const AllFilms = () => {
                 text
             ),
     });
+
     const columns = [
         {
             title: 'Название',
@@ -138,6 +139,7 @@ const AllFilms = () => {
             key: '1',
             width: '15%',
             ...getColumnSearchProps('name'),
+
         },
         {
             title: 'Дата выхода',
@@ -166,6 +168,14 @@ const AllFilms = () => {
             key: '5',
             width: '10%',
         },
+        {
+            title: 'Посмотрю',
+            dataIndex: '',
+            key: '6',
+            width: '15%',
+            render:()=><a><CheckOutlined style={{fontSize:'23px', color:'green'}}/></a>
+
+        }
     ];
     return <Table columns={columns} dataSource={data}/>;
 };

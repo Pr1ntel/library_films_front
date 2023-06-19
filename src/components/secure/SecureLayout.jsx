@@ -1,5 +1,5 @@
 import {
-    MenuFoldOutlined, MenuUnfoldOutlined,
+    MenuFoldOutlined, MenuUnfoldOutlined, MinusOutlined, PlusOutlined,
     UploadOutlined,
     UserOutlined,
     VideoCameraOutlined,
@@ -41,7 +41,7 @@ const SecureLayout = () => {
                         },
                         {
                             key: '4',
-                            icon: <UploadOutlined/>,
+                            icon: <PlusOutlined />,
                             label: <Link
                                 to='/secure/add-films'>
                                 Добавить фильм
@@ -49,7 +49,7 @@ const SecureLayout = () => {
                         },
                         {
                             key: '5',
-                            icon: <UploadOutlined/>,
+                            icon: <MinusOutlined />,
                             label: <Link
                                 to='/secure/delete-films'>
                                 Удалить фильм
