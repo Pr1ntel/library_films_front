@@ -4,6 +4,3 @@ import HomePage from "./HomePage";
 test('render Homepage', () => {
     render(<HomePage />);
 });
-
-/*
-expect(screen.getByAltText('Жанр')).toBeInTheDocument();*/

@@ -4,12 +4,10 @@
 // learn more: https://github.com/testing-library/jest-dom
 import '@testing-library/jest-dom';
 
-Object.defineProperty(window, 'matchMedia', {
-    value: () => {
-        return {
-            matches: false,
-            addListener: () => {},
-            removeListener: () => {}
-        };
-    }
-})
+global.matchMedia = global.matchMedia || function () {
+    return {
+        matches: false,
+        addListener: jest.fn(),
+        removeListener: jest.fn(),
+    };
+};
