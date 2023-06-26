@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import NotAuthPage from "./NotAuthPage";
 
-test('render Homepage', () => {
+test('render NotAuthPage', () => {
     render(<NotAuthPage />);
 });
