@@ -12,5 +12,8 @@ module.exports = {
     transformIgnorePatterns: [
         "node_modules/(?!troublesome-dependency/.*)",
     ],
+    "setupFilesAfterEnv": [
+        "<rootDir>/src/setupTests.ts"
+    ],
 }
 
