@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {Outlet} from "react-router-dom";
-import NotAuthPage from "./NotAuthPage";
-import LocalStorageWorker from "../../store/LocalStorageWorker";
+import NotAuthPage from "../components/secure/NotAuthPage";
+import LocalStorageWorker from "./LocalStorageWorker";
 
 const SecureFilter = () => {
 
