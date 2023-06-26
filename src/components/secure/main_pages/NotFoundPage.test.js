@@ -1,12 +1,31 @@
-import { render, screen } from '@testing-library/react';
-import { BrowserRouter } from 'react-router-dom'
+import {render, screen} from '@testing-library/react';
+import {BrowserRouter} from 'react-router-dom'
 import NotFoundPage from "./NotFoundPage";
 
-test('render MainPage', () => {
+
+test('render NotFoundPage', () => {
     render(
         <BrowserRouter>
-            <NotFoundPage />
+            <NotFoundPage/>
         </BrowserRouter>
     );
-    /*expect(screen.getByAltText('Жанр')).toBeInTheDocument();*/
 });
+
+
+describe('render text in NotFoundPage', () => {
+    it('render not page', function () {
+        render(
+            <BrowserRouter>
+                <NotFoundPage/>
+            </BrowserRouter>);
+        const text = screen.getByText(/NOT FOUND PAGE/);
+    });
+    it('render textLink go mainPage', function () {
+        render(
+            <BrowserRouter>
+                <NotFoundPage/>
+            </BrowserRouter>);
+        const text = screen.getByText(/Вернитесь на главную страницу/);
+    });
+})
+

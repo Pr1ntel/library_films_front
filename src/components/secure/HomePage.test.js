@@ -1,14 +1,16 @@
-import {getByText, render, screen, waitForElementToBeRemoved} from '@testing-library/react';
+import {render, screen} from '@testing-library/react';
 import HomePage from "./HomePage";
 import {BrowserRouter} from "react-router-dom";
 
-test('render Homepage', () => {
+test('render HomePage', () => {
     render(
         <BrowserRouter>
-        <HomePage />
+            <HomePage/>
         </BrowserRouter>
     );
-
-    const text = screen.getByText(/HOME PAGE НЕ ПРИДУМАЛ ЧЕ ТУТ БУДЕТ/)
 });
 
+test('render text HomePage', () => {
+    render(<HomePage/>);
+    const text = screen.getByText(/HOME PAGE НЕ ПРИДУМАЛ ЧЕ ТУТ БУДЕТ/);
+})
