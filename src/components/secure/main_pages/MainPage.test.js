@@ -1,7 +1,11 @@
-import {render, screen} from '@testing-library/react';
+import {fireEvent, render, screen} from '@testing-library/react';
 import {BrowserRouter} from 'react-router-dom'
 import MainPage from "./MainPage";
+import React from "react";
 
+const Button = ({onClick, children}) => (
+    <button onClick={onClick}>{children}</button>
+)
 
 const renderPage = render(
     <BrowserRouter>
@@ -37,4 +41,19 @@ describe('render text in MainPage', () => {
             </BrowserRouter>);
         const text = screen.getByText(/Авторизация/);
     });
-})
+
+    describe('render and click on button in MainPage', () => {
+        it('test button registr', () => {
+            const handleClick = jest.fn();
+            render(<Button onClick={handleClick}>Регистрация</Button>)
+            fireEvent.click(screen.getByText(/Регистрация/i))
+            expect(handleClick).toHaveBeenCalledTimes(1)
+        });
+        it('test button auth', () => {
+            const handleClick = jest.fn();
+            render(<Button onClick={handleClick}>Авторизация</Button>)
+            fireEvent.click(screen.getByText(/Авторизация/i))
+            expect(handleClick).toHaveBeenCalledTimes(1)
+        });
+    })
+});

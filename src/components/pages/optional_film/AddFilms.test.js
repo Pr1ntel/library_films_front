@@ -2,7 +2,7 @@ import {fireEvent, render, screen} from '@testing-library/react';
 import {BrowserRouter} from 'react-router-dom';
 import {waitFor} from "@testing-library/react";
 import AddFilms from "./AddFilms";
-import {Button} from "antd";
+
 
 
 window.matchMedia = window.matchMedia || function () {
@@ -60,18 +60,6 @@ describe('render text in AddFilms', () => {
         const text = screen.getByText(/Описание фильма/);
     });
 
-    test('test button', () => {
-        render(
-            <BrowserRouter>
-                <AddFilms/>
-            </BrowserRouter>);
-        const primaryButton = screen.getByRole('button', {name: /Добавить/i});
-        fireEvent.click(primaryButton)
-
-
-    })
-
-
 
     describe('render text placeholder in AddFilms', () => {
         it('render field nameFilm', function () {
@@ -119,5 +107,14 @@ describe('render text in AddFilms', () => {
 
             waitFor(() => expect(inputDescription).toBeInTheDocument());
         });
+    });
+
+    test('test button', () => {
+        render(
+            <BrowserRouter>
+                <AddFilms/>
+            </BrowserRouter>);
+        const primaryButton = screen.getByRole('button', {name: /Добавить/i});
+        fireEvent.click(primaryButton)
     });
 });
