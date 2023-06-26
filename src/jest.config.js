@@ -1,12 +1,16 @@
 module.exports = {
-    preset: 'ts-jest/presets/js-with-ts',
-    testEnvironment: "node",
+    testEnvironment: 'jsdom',
+    transform: {
+        '\\.[jt]sx?$': 'esbuild-jest',
+    },
     globals: {
         'ts-jest': {
             tsconfig: '<rootDir>/test/tsconfig.json',
+            transformIgnorePatterns: ["node_modules/(?!axios)"],
         },
     },
     transformIgnorePatterns: [
         "node_modules/(?!troublesome-dependency/.*)",
     ],
 }
+
