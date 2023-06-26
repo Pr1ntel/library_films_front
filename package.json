@@ -20,7 +20,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "jest --env=jest-environment-jsdom-sixteen",
+    "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
   "browserslist": {

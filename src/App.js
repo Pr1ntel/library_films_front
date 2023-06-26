@@ -1,6 +1,6 @@
 import React from "react";
-import {Route} from "react-router-dom";
-import {Routes} from "react-router-dom";
+import {Route, Routes, Link} from "react-router-dom";
+
 
 import MainPage from "./components/secure/main_pages/MainPage";
 import NotFoundPage from "./components/secure/main_pages/NotFoundPage";
@@ -19,7 +19,6 @@ import AllFilms from "./components/secure/AllFilms";
 const App = () => {
     return (
         <Routes>
-
             <Route path="/" element={<MainPage/>}/>
             <Route path="/register" element={<RegisterPage/>}/>
             <Route path="/authenticate" element={<AuthPage/>}/>
@@ -32,7 +31,7 @@ const App = () => {
                 <Route path="*" element={<NotFoundPage/>}/>
             </Route>
         </Routes>
-    )
+            )
 }
 
 export default App;

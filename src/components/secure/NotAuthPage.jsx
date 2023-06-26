@@ -1,6 +1,8 @@
 import React from 'react';
-import Link from "antd/es/typography/Link";
+
 import {Button} from "antd";
+import {BrowserRouter as Link} from "react-router-dom";
+
 
 const NotAuthPage = () => {
     return (

@@ -170,10 +170,10 @@ const AllFilms = () => {
         },
         {
             title: 'Посмотрю',
-            dataIndex: '',
+            dataIndex: 'ButtonAddFilm',
             key: '6',
-            width: '15%',
-            render:()=><a><CheckOutlined style={{fontSize:'23px', color:'green'}}/></a>
+            width: '2%',
+            render:()=><a><CheckOutlined style={{fontSize:'23px', color:'green',flex:1,alignItems:'center' }}/></a>
 
         }
     ];
