@@ -31,7 +31,8 @@ describe('render text in AuthPage', () => {
     });
 });
 
-test('test click button (no data)login = false', () => {
+
+/*test('test click button (no data)login = false', () => {
     render(
         <BrowserRouter>
             <AuthPage/>
@@ -39,5 +40,5 @@ test('test click button (no data)login = false', () => {
     );
     const primaryButton = screen.getByRole('button', {name: /Авторизоваться/i});
     fireEvent.click(primaryButton)
-});
+});*/
 

@@ -1,7 +1,21 @@
-import {Button, Form, Input} from 'antd';
-import React, { useState} from 'react';
+import {Alert, Button, Form, Input, Result, Space} from 'antd';
+import React, {useState} from 'react';
+import AuthApiWorker from "../../films_worker_api/AuthApiWorker";
+import {render} from "@testing-library/react";
 
+const badRegister = () => {
 
+}
+const getRegisterOk = () => (
+    <Space
+        direction="vertical"
+        style={{
+            width: '100%',
+        }}
+    >
+        <Alert message="Вы зарегистрировлись" type="success" showIcon/>
+    </Space>
+);
 const onFinish = (values) => {
     console.log('Success:', values);
 };
@@ -10,34 +24,53 @@ const onFinishFailed = (errorInfo) => {
 };
 
 const RegisterPage = () => {
+    let authApiWorker = new AuthApiWorker();
 
     let [username, setUsername] = useState("");
     let [password, setPassword] = useState("");
-    return (
 
-        <Form
-            name="basic"
-            labelCol={{
-                span: 8,
-            }}
-            wrapperCol={{
-                span: 16,
-            }}
-            style={{
-                maxWidth: 600,
-            }}
-            initialValues={{
-                remember: true,
-            }}
-            onFinish={onFinish}
-            onFinishFailed={onFinishFailed}
-            autoComplete="off"
-            style={{
-                width: 300,
-                position: "fixed",
-                top: "45%",
-                left: "45%",
-            }}
+
+    const register = (e) => {
+        e.preventDefault();
+
+        let userCredentials = {
+            "username": username,
+            "password": password
+        }
+        try {
+
+            authApiWorker.registerUser(userCredentials)
+                .then(response => {
+                    render(getRegisterOk());
+                })
+        } catch(e) {
+            console.log("addFilm ERRRROR");
+        }
+    }
+    return (
+        <Form onSubmitCapture={register}
+              name="basic"
+              labelCol={{
+                  span: 8,
+              }}
+              wrapperCol={{
+                  span: 16,
+              }}
+              style={{
+                  maxWidth: 600,
+              }}
+              initialValues={{
+                  remember: true,
+              }}
+              onFinish={onFinish}
+              onFinishFailed={onFinishFailed}
+              autoComplete="off"
+              style={{
+                  width: 300,
+                  position: "fixed",
+                  top: "45%",
+                  left: "45%",
+              }}
         >
             <Form.Item
                 label="Username"
@@ -50,7 +83,7 @@ const RegisterPage = () => {
                 ]}
             >
                 <Input value={username}
-                       onChange={event=>setUsername(event.target.value)} />
+                       onChange={event => setUsername(event.target.value)}/>
             </Form.Item>
             <Form.Item
                 label="Password"
@@ -63,7 +96,7 @@ const RegisterPage = () => {
                 ]}
             >
                 <Input.Password value={password}
-                                onChange={event=>setPassword(event.target.value)} />
+                                onChange={event => setPassword(event.target.value)}/>
             </Form.Item>
             <Form.Item
                 wrapperCol={{

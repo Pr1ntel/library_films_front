@@ -12,6 +12,9 @@ class AuthApiWorker {
     async authenticateUser(userCredentials) {
         return await this.#axios.post("/authenticate", userCredentials);
     }
+    async registerUser(userCredentials) {
+        return await this.#axios.post("/register",userCredentials);
+    }
 }
 
 export default AuthApiWorker;
