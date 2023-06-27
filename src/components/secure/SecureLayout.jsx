@@ -4,9 +4,10 @@ import {
     UserOutlined,
     VideoCameraOutlined,
 } from '@ant-design/icons';
-import {Button, Layout, Menu, theme} from 'antd';
+import {Avatar, Button, Layout, Menu, Segmented, Space, theme} from 'antd';
 import {useState} from 'react';
 import {Link, Outlet} from "react-router-dom";
+import {moveRightOut} from "antd/es/style/motion";
 
 const {Header, Sider, Content} = Layout;
 const SecureLayout = () => {
@@ -16,6 +17,7 @@ const SecureLayout = () => {
     } = theme.useToken();
     return (
         <Layout>
+
             <Sider trigger={null} collapsible collapsed={collapsed}>
                 <div className="demo-logo-vertical"/>
                 <Menu
@@ -24,11 +26,11 @@ const SecureLayout = () => {
                     defaultSelectedKeys={['1']}
                     items={[
                         {
-                            key: '1',
-                            icon: <UserOutlined/>,
+                            key:'1',
+                            icon: <Avatar src="https://xsgames.co/randomusers/avatar.php?g=pixel" />,
                             label: <Link
                                 to='/secure/home'>
-                                Главная
+                                Моя страница
                             </Link>,
                         },
                         {

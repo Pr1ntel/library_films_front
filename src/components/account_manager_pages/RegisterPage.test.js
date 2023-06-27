@@ -40,7 +40,7 @@ test('test button', () => {
     fireEvent.click(primaryButton)
 });
 
-test('test click button register = false', () => {
+test('test click button (no data)register = false', () => {
     render(
         <BrowserRouter>
             <RegisterPage/>

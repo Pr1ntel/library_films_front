@@ -14,5 +14,5 @@ test('render HomePage', () => {
 
 test('render text HomePage', () => {
     render(<HomePage/>)
-    const text = screen.getByText(/HOME PAGE НЕ ПРИДУМАЛ ЧЕ ТУТ БУДЕТ/);
+    const text = screen.getByText(/Моя страница/);
 })

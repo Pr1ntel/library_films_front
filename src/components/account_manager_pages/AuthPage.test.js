@@ -31,7 +31,7 @@ describe('render text in AuthPage', () => {
     });
 });
 
-test('test click button login = false', () => {
+test('test click button (no data)login = false', () => {
     render(
         <BrowserRouter>
             <AuthPage/>

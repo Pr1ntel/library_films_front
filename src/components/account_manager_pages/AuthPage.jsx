@@ -2,15 +2,74 @@ import React, {useEffect, useState} from 'react';
 import AuthApiWorker from "../../films_worker_api/AuthApiWorker";
 import LocalStorageWorker from "../../store/LocalStorageWorker";
 import {useNavigate} from "react-router-dom";
-import {Button, Form, Input} from 'antd';
+import {Button, Form, Input, Result} from 'antd';
+import {CloseCircleOutlined} from "@ant-design/icons";
+import Paragraph from "antd/es/skeleton/Paragraph";
+
 
 const AuthPage = () => {
-    const onFinish = (values) => {
-        console.log('Success:', values);
+
+    const getAuthOk = () => (
+        <>
+        <Result
+            status="success"
+            title="Successfully Purchased Cloud Server ECS!"
+            subTitle="Order number: 2017182818828182881 Cloud server configuration takes 1-5 minutes, please wait."
+            extra={[
+                <Button type="primary" key="console">
+                    Go Console
+                </Button>,
+                <Button key="buy">Buy Again</Button>,
+            ]}
+        />
+        </>
+    );
+
+    const getAuthBad = ()=> {
+        return (
+            <>
+            <Result
+                status="error"
+                title="Submission Failed"
+                subTitle="Please check and modify the following information before resubmitting."
+                extra={[
+                    <Button type="primary" key="console">
+                        Go Console
+                    </Button>,
+                    <Button key="buy">Buy Again</Button>,
+                ]}
+            >
+                <div className="desc">
+                    <Paragraph>
+                        <Text
+                            strong
+                            style={{
+                                fontSize: 16,
+                            }}
+                        >
+                            The content you submitted has the following error:
+                        </Text>
+                    </Paragraph>
+                    <Paragraph>
+                        <CloseCircleOutlined className="site-result-demo-error-icon"/> Your account has been
+                        frozen. <a>Thaw immediately &gt;</a>
+                    </Paragraph>
+                    <Paragraph>
+                        <CloseCircleOutlined className="site-result-demo-error-icon"/> Your account is not yet
+                        eligible to apply. <a>Apply Unlock &gt;</a>
+                    </Paragraph>
+                </div>
+            </Result>
+            </>
+        );
+    }
+    const onFinish = () => {
+        console.log('Success:', getAuthOk());
     };
-    const onFinishFailed = (errorInfo) => {
-        console.log('Failed:', errorInfo);
+    const onFinishFailed = () => {
+        console.log('Failed:', getAuthBad());
     };
+
 
     let [username, setUsername] = useState("");
     let [password, setPassword] = useState("");
@@ -31,11 +90,11 @@ const AuthPage = () => {
         authApiWorker.authenticateUser(userCredentials).then(
             response => {
                 localStorageWorker.saveToken(response.data.token);
-                alert("вы успешно авторизованы");
-                navigate("/secure/user");
+                alert(getAuthOk())
+                navigate("/secure/home");
             })
             .catch(error => {
-                alert("неправильная пара логин-пароль");
+                alert(getAuthBad());
                 console.log(error);
             });
     }
@@ -107,5 +166,7 @@ const AuthPage = () => {
         </Form>
     );
 };
+
+
 
 export default AuthPage;

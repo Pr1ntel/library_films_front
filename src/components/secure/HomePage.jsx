@@ -3,7 +3,7 @@ import React from 'react';
 const HomePage = () => {
     return (
         <div>
-            HOME PAGE НЕ ПРИДУМАЛ ЧЕ ТУТ БУДЕТ
+           <h1>Моя страница</h1>
         </div>
     );
 };
