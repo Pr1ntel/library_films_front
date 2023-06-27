@@ -1,13 +1,8 @@
 import {
-    MenuFoldOutlined, MenuUnfoldOutlined, MinusOutlined, PlusOutlined,
-    UploadOutlined,
-    UserOutlined,
-    VideoCameraOutlined,
-} from '@ant-design/icons';
-import {Avatar, Button, Layout, Menu, Segmented, Space, theme} from 'antd';
+    MenuFoldOutlined, MenuUnfoldOutlined, MinusOutlined, PlusOutlined, VideoCameraOutlined,} from '@ant-design/icons';
+import {Avatar, Button, Layout, Menu, theme} from 'antd';
 import {useState} from 'react';
 import {Link, Outlet} from "react-router-dom";
-import {moveRightOut} from "antd/es/style/motion";
 
 const {Header, Sider, Content} = Layout;
 const SecureLayout = () => {
@@ -17,7 +12,6 @@ const SecureLayout = () => {
     } = theme.useToken();
     return (
         <Layout>
-
             <Sider trigger={null} collapsible collapsed={collapsed}>
                 <div className="demo-logo-vertical"/>
                 <Menu
@@ -57,7 +51,6 @@ const SecureLayout = () => {
                                 Удалить фильм
                             </Link>,
                         },
-
                     ]}
                 />
             </Sider>

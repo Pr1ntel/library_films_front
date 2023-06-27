@@ -1,8 +1,6 @@
 import {Button, Form, Input} from 'antd';
 import React, { useState} from 'react';
-import {useNavigate} from "react-router-dom";
-import authApiWorker from "../../films_worker_api/AuthApiWorker";
-import localStorageWorker from "../../store/LocalStorageWorker";
+
 
 const onFinish = (values) => {
     console.log('Success:', values);
@@ -10,7 +8,6 @@ const onFinish = (values) => {
 const onFinishFailed = (errorInfo) => {
     console.log('Failed:', errorInfo);
 };
-
 
 const RegisterPage = () => {
 
@@ -55,7 +52,6 @@ const RegisterPage = () => {
                 <Input value={username}
                        onChange={event=>setUsername(event.target.value)} />
             </Form.Item>
-
             <Form.Item
                 label="Password"
                 name="password"
@@ -69,8 +65,6 @@ const RegisterPage = () => {
                 <Input.Password value={password}
                                 onChange={event=>setPassword(event.target.value)} />
             </Form.Item>
-
-
             <Form.Item
                 wrapperCol={{
                     offset: 8,

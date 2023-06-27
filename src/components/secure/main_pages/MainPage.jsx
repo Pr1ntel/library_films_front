@@ -14,7 +14,6 @@ const MainPage = () => {
             >
                 <h1>Главная страница</h1>
                 <Link to="/register"><Button type="primary">Регистрация</Button> </Link>
-
                 <Link to="/authenticate"><Button type="primary">Авторизация</Button> </Link>
             </Card>
         </div>

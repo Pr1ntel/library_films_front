@@ -1,5 +1,5 @@
 import React from "react";
-import {Route, Routes, Link} from "react-router-dom";
+import {Route, Routes} from "react-router-dom";
 
 
 import MainPage from "./components/secure/main_pages/MainPage";
@@ -12,8 +12,6 @@ import RegisterPage from "./components/account_manager_pages/RegisterPage";
 import AddFilms from "./components/pages/optional_film/AddFilms";
 import DeleteFilms from "./components/pages/optional_film/DeleteFilms";
 import AllFilms from "./components/secure/AllFilms";
-
-
 
 
 const App = () => {
@@ -31,7 +29,7 @@ const App = () => {
                 <Route path="*" element={<NotFoundPage/>}/>
             </Route>
         </Routes>
-            )
+    )
 }
 
 export default App;

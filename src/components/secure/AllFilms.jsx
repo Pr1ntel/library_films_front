@@ -1,4 +1,4 @@
-import {CheckOutlined, MinusOutlined, PlusCircleOutlined, PlusOutlined, SearchOutlined} from '@ant-design/icons';
+import {CheckOutlined, SearchOutlined} from '@ant-design/icons';
 import {Button, Input, Space, Table} from 'antd';
 import {useEffect, useRef, useState} from 'react';
 import Highlighter from 'react-highlight-words';

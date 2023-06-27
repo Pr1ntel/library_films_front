@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import {Button, Col, Form, Input, Row, Select} from 'antd';
 import FilmsApiWorker from "../../../films_worker_api/FilmsApiWorker";
 import LocalStorageWorker from "../../../store/LocalStorageWorker";
@@ -51,7 +51,6 @@ const AddFilms = () => {
             duration,
             styleFilmId,
             description
-
         };
         console.log(filmsItem);
         let token = localStorageWorker.getToken();
@@ -63,12 +62,11 @@ const AddFilms = () => {
                 console.log("addFilm ERRRROR");
             });
     }
-        return (
+    return (
         <div>
             <Row>
                 <Col span={24}>
                     <div style={{opacity: 0.9}}>
-
                         <Form
                             {...layout}
                             name="nest-messages"
@@ -88,7 +86,6 @@ const AddFilms = () => {
                                     },
                                 ]}
                             >
-
                                 <Input value={name}
                                        allowClear="true"
                                        placeholder="Название фильма"
@@ -213,6 +210,5 @@ const AddFilms = () => {
         </div>
     )
 };
-
 
 export default AddFilms;

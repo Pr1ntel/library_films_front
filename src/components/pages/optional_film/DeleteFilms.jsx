@@ -1,4 +1,4 @@
-import {Col, Input, Space, Row, Select, Button} from 'antd';
+import {Col, Input, Space, Row, Button} from 'antd';
 import React, {useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";
 import LocalStorageWorker from "../../../store/LocalStorageWorker";
@@ -30,7 +30,6 @@ const DeleteFilms = () => {
                 <Col span={24}>
                     <div style={{opacity: 1}}>
                         <div>
-
                             <Input allowClear="true"
                                    placeholder="Название фильма" style={{
                                 width: '19%',
@@ -40,7 +39,6 @@ const DeleteFilms = () => {
                                        setName(event.target.value);
                                        console.log(name)
                                    }}/>
-
                         </div>
                         <div>
                             <Space
@@ -62,8 +60,6 @@ const DeleteFilms = () => {
                                 Удалить
                             </Button>
                         </div>
-
-
                     </div>
                 </Col>
             </Row>

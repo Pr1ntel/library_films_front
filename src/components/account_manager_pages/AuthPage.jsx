@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import AuthApiWorker from "../../films_worker_api/AuthApiWorker";
 import LocalStorageWorker from "../../store/LocalStorageWorker";
 import {useNavigate} from "react-router-dom";
@@ -166,7 +166,5 @@ const AuthPage = () => {
         </Form>
     );
 };
-
-
 
 export default AuthPage;
