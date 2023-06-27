@@ -4,7 +4,6 @@ import {waitFor} from "@testing-library/react";
 import AddFilms from "./AddFilms";
 
 
-
 window.matchMedia = window.matchMedia || function () {
     return {
         matches: false,
@@ -28,35 +27,40 @@ describe('render text in AddFilms', () => {
         render(
             <BrowserRouter>
                 <AddFilms/>
-            </BrowserRouter>);
+            </BrowserRouter>
+        );
         const text = screen.getByText(/Название фильма/);
     });
     it('render field styleFilm', function () {
         render(
             <BrowserRouter>
                 <AddFilms/>
-            </BrowserRouter>);
+            </BrowserRouter>
+        );
         const text = screen.getByText(/Жанр фильма/);
     });
     it('render field releaseYear', function () {
         render(
             <BrowserRouter>
                 <AddFilms/>
-            </BrowserRouter>);
+            </BrowserRouter>
+        );
         const text = screen.getByText(/Дата выхода/);
     });
     it('render field duration', function () {
         render(
             <BrowserRouter>
                 <AddFilms/>
-            </BrowserRouter>);
+            </BrowserRouter>
+        );
         const text = screen.getByText(/Длительность\(Минут\)/);
     });
     it('render field description', function () {
         render(
             <BrowserRouter>
                 <AddFilms/>
-            </BrowserRouter>);
+            </BrowserRouter>
+        );
         const text = screen.getByText(/Описание фильма/);
     });
 
@@ -75,7 +79,8 @@ describe('render text in AddFilms', () => {
             render(
                 <BrowserRouter>
                     <AddFilms/>
-                </BrowserRouter>)
+                </BrowserRouter>
+            );
             const inputStyleFilm = screen.findByPlaceholderText('Жанр фильма');
 
             waitFor(() => expect(inputStyleFilm).toBeInTheDocument());
@@ -84,7 +89,8 @@ describe('render text in AddFilms', () => {
             render(
                 <BrowserRouter>
                     <AddFilms/>
-                </BrowserRouter>)
+                </BrowserRouter>
+            );
             const inputReleaseYear = screen.getByPlaceholderText('Дата выхода');
 
             waitFor(() => expect(inputReleaseYear).toBeInTheDocument());
@@ -93,7 +99,8 @@ describe('render text in AddFilms', () => {
             render(
                 <BrowserRouter>
                     <AddFilms/>
-                </BrowserRouter>)
+                </BrowserRouter>
+            );
             const inputDuration = screen.findByPlaceholderText('Длительность(Минут)');
 
             waitFor(() => expect(inputDuration).toBeInTheDocument());
@@ -102,7 +109,8 @@ describe('render text in AddFilms', () => {
             render(
                 <BrowserRouter>
                     <AddFilms/>
-                </BrowserRouter>)
+                </BrowserRouter>
+            );
             const inputDescription = screen.findByPlaceholderText('Описание фильма');
 
             waitFor(() => expect(inputDescription).toBeInTheDocument());
@@ -113,7 +121,8 @@ describe('render text in AddFilms', () => {
         render(
             <BrowserRouter>
                 <AddFilms/>
-            </BrowserRouter>);
+            </BrowserRouter>
+        );
         const primaryButton = screen.getByRole('button', {name: /Добавить/i});
         fireEvent.click(primaryButton)
     });
