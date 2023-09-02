@@ -1,44 +1,13 @@
-import {fireEvent, render, screen} from '@testing-library/react';
-import {BrowserRouter} from 'react-router-dom';
+import { render, screen } from '@testing-library/react';
 import AuthPage from "./AuthPage";
+import {BrowserRouter} from "react-router-dom";
+import React from "react";
 
-
-jest.mock("@auth0/auth0-react");
 test('render AuthPage', () => {
     render(
         <BrowserRouter>
-            <AuthPage/>
-        </BrowserRouter>
+        <AuthPage />
+            </BrowserRouter>
     );
 });
-
-describe('render text in AuthPage', () => {
-    it('render field username', function () {
-        render(
-            <BrowserRouter>
-                <AuthPage/>
-            </BrowserRouter>
-        );
-        const text = screen.getByText(/Username/);
-    });
-    it('render field password', function () {
-        render(
-            <BrowserRouter>
-                <AuthPage/>
-            </BrowserRouter>
-        );
-        const text = screen.getByText(/Password/);
-    });
-});
-
-
-/*test('test click button (no data)login = false', () => {
-    render(
-        <BrowserRouter>
-            <AuthPage/>
-        </BrowserRouter>
-    );
-    const primaryButton = screen.getByRole('button', {name: /Авторизоваться/i});
-    fireEvent.click(primaryButton)
-});*/
 

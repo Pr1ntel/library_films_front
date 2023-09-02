@@ -3,6 +3,7 @@ import {
 import {Avatar, Button, Layout, Menu, theme} from 'antd';
 import {useState} from 'react';
 import {Link, Outlet} from "react-router-dom";
+import header from "../pages/header/Header";
 
 const {Header, Sider, Content} = Layout;
 const SecureLayout = () => {
@@ -10,8 +11,11 @@ const SecureLayout = () => {
     const {
         token: {colorBgContainer},
     } = theme.useToken();
+    const head = header;
     return (
-        <Layout>
+
+        <Layout style={{ height:"100vh"}}>
+
             <Sider trigger={null} collapsible collapsed={collapsed}>
                 <div className="demo-logo-vertical"/>
                 <Menu
@@ -56,6 +60,7 @@ const SecureLayout = () => {
             </Sider>
             <Layout>
                 <Header
+
                     style={{
                         padding: 0,
                         background: colorBgContainer,
@@ -84,6 +89,7 @@ const SecureLayout = () => {
                 </Content>
             </Layout>
         </Layout>
+
     );
 };
 

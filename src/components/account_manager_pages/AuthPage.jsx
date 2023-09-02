@@ -1,29 +1,16 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import AuthApiWorker from "../../films_worker_api/AuthApiWorker";
 import LocalStorageWorker from "../../store/LocalStorageWorker";
 import {useNavigate} from "react-router-dom";
-import {Alert, Button, Form, Input, Result} from 'antd';
-import {CloseCircleOutlined} from "@ant-design/icons";
-import Paragraph from "antd/es/skeleton/Paragraph";
-import {render} from "@testing-library/react";
-
+import {Button, Form, Input} from 'antd';
 
 const AuthPage = () => {
-
-    const authOk = ()=> {
-        return (
-            <>
-                <Alert message="Success Tips" type="success" showIcon />
-            </>
-        );
-    }
     const onFinish = (values) => {
         console.log('Success:', values);
     };
-    const onFinishFailed = (values) => {
-        console.log('Failed:', values());
+    const onFinishFailed = (errorInfo) => {
+        console.log('Failed:', errorInfo);
     };
-
 
     let [username, setUsername] = useState("");
     let [password, setPassword] = useState("");
@@ -44,12 +31,11 @@ const AuthPage = () => {
         authApiWorker.authenticateUser(userCredentials).then(
             response => {
                 localStorageWorker.saveToken(response.data.token);
-                navigate("/secure/home");
+                alert("вы успешно авторизованы");
+                navigate("/secure/user");
             })
             .catch(error => {
-                alert(
-                    render(authOk())
-                )
+                alert("неправильная пара логин-пароль");
                 console.log(error);
             });
     }

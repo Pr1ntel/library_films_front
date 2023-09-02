@@ -1,6 +1,7 @@
 import {render, screen} from "@testing-library/react";
 import {BrowserRouter} from "react-router-dom";
 import AllFilms from "./AllFilms";
+import React from "react";
 
 
 window.matchMedia = window.matchMedia || function () {

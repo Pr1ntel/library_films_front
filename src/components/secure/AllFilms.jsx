@@ -131,7 +131,8 @@ const AllFilms = () => {
                 text
             ),
     });
-
+    const name = "фильм";
+    document.title = name;
     const columns = [
         {
             title: 'Название',
@@ -177,6 +178,7 @@ const AllFilms = () => {
 
         }
     ];
-    return <Table columns={columns} dataSource={data}/>;
-};
+    return (
+        <Table columns={columns} dataSource={data}/>
+)};
 export default AllFilms;
